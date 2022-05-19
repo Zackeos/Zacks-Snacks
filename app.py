@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 import sqlite3
 import smtplib, ssl
 import json
+import os
 
 app = Flask(__name__)
 
@@ -25,9 +26,12 @@ conn.execute("""CREATE TABLE if not exists PRODUCTS
               photo TEXT NOT NULL
             );
              """)
-send = os.environ['SEND']
-receive = os.environ['RECIEVE']
-Storedpassword = os.environ['PASSWORD']
+# send = os.environ['SEND']
+# receive = os.environ['RECIEVE']
+# Storedpassword = os.environ['PASSWORD']
+send = "no"
+recieve = "no"
+Storedpassword = "no"
 
 def email(name, query, email):
     message = f"""\
@@ -38,7 +42,9 @@ Subject: Query from {name} ({email})
     port = 465
     smtp_server = "smtp.gmail.com"
     sender_email = send
-    receiver_email = receive
+    if sender_email == "no":
+        return None
+    receiver_email = recieve
     password = Storedpassword
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
