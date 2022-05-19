@@ -1,0 +1,20 @@
+{% extends "blank.html" %}
+{% block content %}
+  {% for sale in salees %}
+    <div id="SalesBox">
+      
+      <div id ="InnerSales">
+        <img class="salesImage" src="{{ url_for('static', filename=sale['photo']) }}">
+      </div>
+      <div id = SaleInfo>
+        <h2>{{sale["name"]}}</h2>
+        <span style = "text-decoration: line-through; color: #a89003">£{{sale["price"]}} </span><span style="color: #a89003">£{{sale["newPrice"]}}</span>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}
+
+{% block salesButton %}
+<button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px 0px; border-color: #1C8E00;" onclick="window.location.href = '/sales'">Sales</button>
+{% endblock %}

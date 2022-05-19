@@ -1,0 +1,37 @@
+<head>
+  {% block head %}
+    <link rel='stylesheet' href="{{ url_for('static', filename='stylesheet.css') }}"/>
+    <title>{{title}} - Store</title>
+  {% endblock %}
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+</style>
+<body>
+  
+  <div id="banner" style="text-align: center;">
+    <img onclick="window.location.href = '/gaming'" id="logo" src="{{ url_for('static', filename='logo.png') }}">
+    <div style="float: left; width: calc(100% - 390px); height: 100%;">
+      <span onclick="window.location.href = '/logic'" id="mainTitle">Zack's Snacks</span>
+    </div>
+    
+    <div style="width: 190px; float: left; height: 100%;">
+      <button id="login" class="accountButton">login</button>
+      <button id="signup" class="accountButton">sign up</button>
+    </div>
+    
+  </div>
+  <div id='ButtonsBox'>
+    {% block homeButton %}
+      <button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px calc(6.25%)"onclick="window.location.href = '/home'">Home</button>
+    {% endblock %}
+    {% block salesButton %}
+      <button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px 0px" onclick="window.location.href = '/sales'">Sales</button>
+    {% endblock %}
+    {% block contactButton %}
+      <button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px 0px" onclick="window.location.href = '/contact'">Contact</button>
+    {% endblock %}
+  </div>
+  {% block content %}
+  {% endblock %}
+</body>

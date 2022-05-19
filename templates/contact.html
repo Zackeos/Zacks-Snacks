@@ -1,0 +1,41 @@
+{% extends "blank.html" %}
+{% block content %}
+  <script>
+
+    function validateForm() {
+      var validRegex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
+      let x = document.forms["ContactForm"]["name"].value;
+      if (x == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+      let y = document.forms["ContactForm"]["email"].value;
+      if (y.match(validRegex)){} 
+      else{
+        alert("Invalid email address!");
+        return false;
+      }
+      alert("Submitted Query Successfully.")
+      return true;
+    }
+      
+  </script>
+
+  <br>
+  <form name="ContactForm" onsubmit="return validateForm()"   method="post" action="/contact" style="width: calc(100% - 20px); margin-left: 10px; float:left;">
+    
+    <label for="NameBox" style="font-size: 35px; color: green;">Name:</label>
+    <input name="name" type="text" id="NameBox" class="ContactInput"><br>
+    
+    <label class="" for="EmailBox" style="font-size: 35px; color: green;">Email:</label><br>
+    <input name="email" type="text" id="EmailBox" class="ContactInput"><br>
+    <label for="QueryInput" style="font-size: 35px; color: green;">Query:</label><br>
+    <textarea name="query" id="QueryInput" cols="40" rows="5"></textarea><br><br>
+    <input id="SubmitButton" type="submit" value="Submit">
+  </form> 
+{% endblock %}
+
+{% block contactButton %}
+<button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px 0px; border-color: #1C8E00;" onclick="window.location.href = '/contact'">Contact</button>
+{% endblock %}
+

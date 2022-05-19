@@ -1,0 +1,145 @@
+body{
+  background-image: url("flyover69.png")
+/*     url("https://www.webbaviation.co.uk/aerial/_data/i/galleries/London/Barnet/Brent_Cross_Flyover_eb13328-me.jpg");  */
+}
+#ButtonsBox{
+  float: left;
+  height: 150px;
+  width: 100%;
+}
+#banner{
+  border: 5px solid black;
+  float: left;
+  height: 200px;
+  width: calc(100% - 10px);
+  background-image: radial-gradient(yellow, green);
+  border-radius: 10px;
+}
+.MenuButton{
+  border: 5px solid black;
+  height: 100px;
+  width: 25%;
+  font-size: 50px;
+  float: left;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#SubmitButton{
+  border: 5px solid black;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+.ProductBox{
+  border: 5px solid black;
+  height: 500px;
+  width: calc(50% - 30px);
+  float: left;
+  margin: 10px 10px 10px 10px;
+  background-color: #d4ffb5;
+  border-radius: 10px;
+}
+#ContactBox{
+  border: 5px solid black;
+  width: calc(100% - 30px);
+  margin: 10px 10px 10px 10px;
+  background-color: #d4ffb5;
+  border-radius: 10px;
+  height: 100px;
+  float: left;
+}
+#InnerProduct{
+  border: 5px solid green;
+  height: 200px;
+  width: calc(100% - 30px);
+  margin: 10px 10px 10px 10px;
+  float: left;
+}
+#SearchBox{
+  border: 5px solid #7a7979;
+  width: 60%;
+  margin-left: 20%;
+  height: 40px;
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+#SalesBox{
+  border: 5px solid black;
+  width: calc(100% - 30px);
+  height: 250px;
+  float: left;
+  margin: 10px 10px 10px 10px;
+  background-color: #d4ffb5;
+  border-radius: 10px;
+}
+#InnerSales{
+  border: 5px solid green;
+  width: calc(15%);
+  height: calc(100% - 30px);
+  float: left;
+  margin: 10px 10px 10px 10px; 
+}
+#SaleInfo{
+  height: calc(100% - 20px);
+  float: left;
+  width: calc(85% - 50px);
+  margin: 10px 10px 10px 10px;
+  font-size: 30px;
+}
+.ContactInput{
+  border: 5px solid #7a7979;
+  width: calc(100%);
+  height: 40px;
+  font-size: 30px;
+  text-align: left;
+}
+.InputTitle{
+  line-height: 40px;
+  text-align: right;
+  margin-right: 5px;
+}
+#ContactBox{
+  width: calc(60%);
+  float: left;
+}
+#QueryInput{
+  border: 5px solid #7a7979;
+  width: calc(100%);
+  height: 300px;
+  text-align: left;
+}
+.ProductInfo{
+  margin-left: 5px;
+}
+#logo{
+  height: 200px;
+  width: 200px;
+  object-position: center;
+  float: left;
+}
+#mainTitle{
+  line-height: 200px;
+  font-family: 'Anton', sans-serif;
+  font-size: 75px;
+}
+.salesImage{
+  width: 100%;
+  height: 100%;
+}
+.accountButton{
+  width: 170px;
+  float: left;
+  height: 60px;
+  border: 5px solid black;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#login{
+  margin-bottom: 5px;
+  margin-top: 25px;
+}
+#signup{
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
