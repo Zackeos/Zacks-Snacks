@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, request_started, url_for, request
 import sqlite3
 import smtplib, ssl
 import json
@@ -85,7 +85,7 @@ def home():
                 searchResults.append(product)
         return json.dumps(searchResults)
     else:
-        return render_template("homepage.html",
+        return render_template("home.html",
                                title="Home",
                                products=products)
 
@@ -98,6 +98,14 @@ def contact():
         query = request.form.get('query', 'not found')
         email(name, query, emailaddress)
     return render_template("contact.html", title="Contact")
+
+@app.route('/login', methods=["POST"])
+def login():
+    emailaddress = request.form.get('email', 'not found')
+    password = request.form.get('psw', 'not found')
+    urlname = request.form.get("address", "not found").split("/")[-1]
+    print(emailaddress, password, urlname)
+    return render_template(f"{urlname}.html", title=f"{urlname.capitalize()}", products=products, salees=salees)
 
 
 @app.route('/sales')

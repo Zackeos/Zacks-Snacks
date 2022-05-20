@@ -1,0 +1,61 @@
+{% extends "blank.html" %}
+
+{% block content %}
+    <script>
+        function search(ele) {
+            if(event.key === 'Enter') {
+                var term = ele.value
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var searchResults = JSON.parse(this.responseText)
+                    if (searchResults == "gotoavi"){
+                        window.location.href = "/avishai";
+                    }
+                    if (searchResults == "pftscout"){
+                        window.location.href = "/pft";
+                    }
+                    var allProducts = document.getElementsByClassName("ProductBox");
+                    while (allProducts.length>0) {
+                        allProducts[0].remove();
+                    }
+                    for (var i = 0; i < searchResults.length; i++) {
+                        const box = document.createElement("div");
+                        box.classList.add("ProductBox");
+                        const header = document.createElement("h1");
+                        header.classList.add("ProductInfo");
+                        header.innerText = searchResults[i]['name'];
+                        box.appendChild(header);
+                        const image = document.createElement("img");
+                        image.setAttribute('id','InnerProduct');
+                        image.setAttribute('onclick',"window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'");
+                        image.setAttribute('src','static/'+searchResults[i]['photo']);
+                        box.appendChild(image);
+                        const price = document.createElement("h2");
+                        price.classList.add("ProductInfo")
+                        price.setAttribute("style","color: #a89003")
+                        price.innerText = "Price: £" + searchResults[i]['price']
+                        box.appendChild(price);
+                        document.body.appendChild(box);
+                    }
+                }
+                }
+                xhttp.open("POST", "/home", true);
+                xhttp.setRequestHeader('Content-type', 'application/json');
+                xhttp.send(JSON.stringify(term));
+            }
+        }
+    </script>
+  <input onkeydown="search(this)" type="text" id="SearchBox" placeholder="Search">
+  {% for product in products %}
+    <div class="ProductBox">
+        <h1 class="ProductInfo">{{product['name']}}</h1>
+        <img onclick="window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'" id="InnerProduct" src="{{ url_for('static', filename=product['photo']) }}">
+        <h2 style="color: #a89003" class="ProductInfo">Price: £{{product['price']}}</h2>
+    </div>
+  {% endfor %}
+{% endblock %}
+
+{% block homeButton %}
+<button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px calc(6.25%); border-color: #1C8E00;"onclick="window.location.href = '/home'">Home</button>
+{% endblock %}
