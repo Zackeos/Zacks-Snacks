@@ -104,7 +104,6 @@ def login():
     emailaddress = request.form.get('email', 'not found')
     password = request.form.get('psw', 'not found')
     urlname = request.form.get("address", "not found").split("/")[-1]
-    print(emailaddress, password, urlname)
     return render_template(f"{urlname}.html", title=f"{urlname.capitalize()}", products=products, salees=salees)
 
 
