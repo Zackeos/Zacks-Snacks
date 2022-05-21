@@ -9,15 +9,26 @@
     @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
 </style>
 <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-  document.getElementById("blurback").style.display = "block";
+function openLoginForm() {
+  document.getElementById("LoginScreen").style.display = "block";
+  document.getElementById("login-blurback").style.display = "block";
 }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-  document.getElementById("blurback").style.display = "none";
+function closeLoginForm() {
+  document.getElementById("LoginScreen").style.display = "none";
+  document.getElementById("login-blurback").style.display = "none";
 }
+
+function openSignupForm() {
+  document.getElementById("SignupScreen").style.display = "block";
+  document.getElementById("signup-blurback").style.display = "block";
+}
+
+function closeSignupForm() {
+  document.getElementById("SignupScreen").style.display = "none";
+  document.getElementById("signup-blurback").style.display = "none";
+}
+
 function validateLogin() {
   var validRegex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
       let x = document.forms["loginform"]["email"].value;
@@ -46,8 +57,8 @@ function validateLogin() {
     </div>
     
     <div style="width: 190px; float: left; height: 100%;">
-      <button id="login" class="accountButton" onclick="openForm()">Login</button>
-      <button id="signup" class="accountButton">Sign up</button>
+      <button id="login" class="accountButton" onclick="openLoginForm()">Login</button>
+      <button id="signup" class="accountButton" onclick="openSignupForm()">Sign up</button>
     </div>
     
   </div>
@@ -62,8 +73,8 @@ function validateLogin() {
       <button class = "MenuButton" style = "margin: 25px calc(6.25%) 25px 0px" onclick="window.location.href = '/contact'">Contact</button>
     {% endblock %}
   </div>
-    <div class="form-background" id="blurback">
-      <div class="form-popup" id="myForm">
+    <div class="form-background" id="login-blurback">
+      <div class="form-popup" id="LoginScreen">
         <form name="loginform" onsubmit="return validateLogin()" method="post" action="/login" class="form-container" id="loginForm">
           <h1>Login</h1>
       
@@ -74,10 +85,27 @@ function validateLogin() {
           <input style="margin-bottom: 5px; margin-top: 5px;" type="password" placeholder="Enter Password" name="psw" required>
       
           <button type="submit" class="btn">Login</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          <button type="button" class="btn cancel" onclick="closeLoginForm()">Close</button>
         </form>
       </div>
     </div>
+  </div>
+  <div class="form-background" id="signup-blurback">
+    <div class="form-popup" id="SignupScreen">
+      <form name="signupform" onsubmit="return validateLogin()" method="post" action="/signup" class="form-container" id="signupForm">
+        <h1>Sign Up</h1>
+    
+        <label for="email"><b>Email</b></label>
+        <input style="margin-bottom: 5px; margin-top: 5px;" type="text" placeholder="Enter Email" name="email" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input style="margin-bottom: 5px; margin-top: 5px;" type="password" placeholder="Enter Password" name="psw" required>
+    
+        <button type="submit" class="btn">Create Account</button>
+        <button type="button" class="btn cancel" onclick="closeSignupForm()">Close</button>
+      </form>
+    </div>
+  </div>
   {% block content %}
   {% endblock %}
 </body>

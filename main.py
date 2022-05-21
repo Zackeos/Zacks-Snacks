@@ -3,6 +3,8 @@ import sqlite3
 import smtplib, ssl
 import json
 import os
+from datetime import date
+import bcrypt
 
 app = Flask(__name__)
 
@@ -29,6 +31,14 @@ conn.execute("""CREATE TABLE if not exists PRODUCTS
               photo TEXT NOT NULL
             );
              """)
+conn.execute("""CREATE TABLE if not exists ACCOUNTS
+            (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+              username TEXT NOT NULL,
+              email TEXT NOT NULL,
+              password DOUBLE NOT NULL,
+              photo TEXT NOT NULL
+            );
+             """)
 # send = os.environ['SEND']
 # receive = os.environ['RECIEVE']
 # Storedpassword = os.environ['PASSWORD']
@@ -36,6 +46,11 @@ send = "no"
 recieve = "no"
 Storedpassword = "no"
 
+def get_hashed_password(plain_text_password):
+    return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
+
+def check_password(plain_text_password, hashed_password):
+    return bcrypt.checkpw(plain_text_password, hashed_password)
 
 def email(name, query, email):
     message = f"""\
@@ -101,6 +116,13 @@ def contact():
 
 @app.route('/login', methods=["POST"])
 def login():
+    emailaddress = request.form.get('email', 'not found')
+    password = request.form.get('psw', 'not found')
+    urlname = request.form.get("address", "not found").split("/")[-1]
+    return render_template(f"{urlname}.html", title=f"{urlname.capitalize()}", products=products, salees=salees)
+
+@app.route('/signup', methods=["POST"])
+def signup():
     emailaddress = request.form.get('email', 'not found')
     password = request.form.get('psw', 'not found')
     urlname = request.form.get("address", "not found").split("/")[-1]
