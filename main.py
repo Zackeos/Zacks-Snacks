@@ -39,6 +39,7 @@ conn.execute("""CREATE TABLE if not exists ACCOUNTS
               photo TEXT NOT NULL
             );
              """)
+
 # send = os.environ['SEND']
 # receive = os.environ['RECIEVE']
 # Storedpassword = os.environ['PASSWORD']
@@ -47,10 +48,10 @@ recieve = "no"
 Storedpassword = "no"
 
 def get_hashed_password(plain_text_password):
-    return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
+    return bcrypt.hashpw(plain_text_password.encode(), bcrypt.gensalt())
 
 def check_password(plain_text_password, hashed_password):
-    return bcrypt.checkpw(plain_text_password, hashed_password)
+    return bcrypt.checkpw(plain_text_password.encode(), hashed_password)
 
 def email(name, query, email):
     message = f"""\
