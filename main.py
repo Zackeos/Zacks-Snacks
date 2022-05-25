@@ -47,7 +47,7 @@ send = "no"
 recieve = "no"
 Storedpassword = "no"
 
-def get_hashed_password(plain_text_password):
+def hash_password(plain_text_password):
     return bcrypt.hashpw(plain_text_password.encode(), bcrypt.gensalt())
 
 def check_password(plain_text_password, hashed_password):
@@ -126,6 +126,7 @@ def login():
 def signup():
     emailaddress = request.form.get('email', 'not found')
     password = request.form.get('psw', 'not found')
+    username = request.form.get('username', 'not found')
     urlname = request.form.get("address", "not found").split("/")[-1]
     return render_template(f"{urlname}.html", title=f"{urlname.capitalize()}", products=products, salees=salees)
 
