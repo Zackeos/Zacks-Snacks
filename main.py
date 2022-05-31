@@ -154,6 +154,5 @@ def avishai():
 @app.route("/pft")
 def pft():
     return render_template("pft.html", title="Pause for Thought")
+    
 app.run(host='0.0.0.0', port=5002)
-
-
