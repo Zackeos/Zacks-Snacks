@@ -31,20 +31,20 @@ function closeSignupForm() {
 
 function validateLogin() {
   var validRegex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
-      let x = document.forms["loginform"]["email"].value;
-      if (x.match(validRegex)){} 
-      else{
-        alert("Invalid email address!");
-        return false;
-      }
-      const box = document.getElementById("loginForm")
-      currentaddress = window.location.href
-      const info = document.createElement("input")
-      info.setAttribute("type","hidden")
-      info.setAttribute("value",currentaddress)
-      info.setAttribute("name","address")
-      box.appendChild(info)
-      return true;
+  let x = document.forms["loginform"]["email"].value;
+  if (x.match(validRegex)){} 
+  else{
+    alert("Invalid email address!");
+    return false;
+  }
+  const box = document.getElementById("loginForm")
+  currentaddress = window.location.href
+  const info = document.createElement("input")
+  info.setAttribute("type","hidden")
+  info.setAttribute("value",currentaddress)
+  info.setAttribute("name","address")
+  box.appendChild(info)
+  return true;
 }
 
 </script>
